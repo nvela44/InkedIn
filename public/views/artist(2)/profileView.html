@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+        <button type="button" class="btn btn-lg btn-primary" ui-sref="style"><i class="fa fa-angle-left"> Back</i></button>
+      </div>
+      <div class="col-md-6"></div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-lg btn-warning" ng-click="controller.editProfile()">Edit Profile <i class="fa fa-pencil" aria-hidden="true"></i></button>
+      </div>
+    </div>
+        <div class="row top-profile">
+          <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <img class="prof-photo" ng-src="{{ controller.artist.profilePic }}" alt="{{ controller.artist.username }}" width="300">
+                <div class="social-btns">
+                    <a class="btn facebook" href="#"><i class="fa fa-facebook"></i></a>
+                    <a class="btn twitter" href="#"><i class="fa fa-twitter"></i></a>
+                    <a class="btn instagram" href="#"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-md-7 bottom">
+              <h2 class="userName">{{ controller.artist.firstName }} {{ controller.artist.lastName }}</h2>
+              <h4>Member Since: {{ controller.artist.dateCreated | date: 'MMM d yyyy' }}</h4>
+            </div>
+              <div class="row">
+                <div class="col-md-7 bottom">
+                  <p>{{ controller.artist.bio }}</p>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+            <h3 class="text-center" style="background-color: gray; text-align: center; color: white; padding: 20px;">Contact Info</h3>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"></div>
+                <div ng-if="controller.artist.allowContact">
+                  <div class="col-md-2 row1">
+                    <h3>Contact Email</h3>
+                    <p>{{ controller.artist.email }}</p>
+                  </div>
+                  <div class="col-md-2 row1">
+                    <h3>Phone Number</h3>
+                    <p>{{ controller.artist.address.phoneNumber }}</p>
+                  </div>
+                </div>
+                <div class="col-md-2 row1">
+                  <h3>Experience</h3>
+                  <p>{{ controller.artist.exp }}
+                  </div>
+                  <div class="col-md-2 row1">
+                    <h3>Pricing</h3>
+                    <p>{{ controller.artist.pricing }}
+                    </div>
+              </div>
+          <div class="row">
+            <div ng-if="controller.artist.allowContact">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+              <h3>Business Type</h3>
+              <p>{{ controller.artist.busType }}</p>
+            </div>
+            <div class="col-md-2">
+              <h3>Business Name</h3>
+              <p>{{ controller.artist.busName }}</p>
+            </div>
+            <div class="col-md-2">
+                  <h3>Business Address</h3>
+                  <p>{{ controller.artist.address.street }}<br>{{ controller.artist.address.city }} {{ controller.artist.address.state | uppercase }}, {{ controller.artist.address.zip }}</p>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+              <br>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-md-offset-5">
+            <p ng-if="controller.artist.allowContact"><span style="color: red">*</span> <small>Your contact information is displayed publicly.</small></p>
+            <p ng-if="!controller.artist.allowContact"><span style="color: red">*</span> <small>Your contact information is NOT currently displayed.</small></p>
+          </div>
+          </div>
+                <hr/>
+                <h3 style="background-color: gray; text-align: center; color: white; padding: 20px;">Gallery</h3>
+                <div>
+                  <!-- /////FILIESTACK -->
+                  <input type="button" class="btn btn-lg btn-primary" value="FilestackUpload" onclick="showPicker()" />
+                  <p id="p2"></p>
+                  <button type="button" name="button" class="btn btn-lg btn-primary" ng-click="controller.uploadPhoto()">Upload</button>
+                </div>
+
+                <br>
+
+                <ul class="masonry">
+                  <li ng-repeat="image in controller.artist.portfolio track by $index" class="image"><img ng-src="{{ image }}"></li>
+                </ul>
+            </div>
+</body>
+
+</html>
+<style>
+
+  ul.masonry {
+    column-count: 5;
+    column-width: 100px;
+  }
+
+  ul.masonry li {
+    margin-top: 20px;
+  }
+
+  ul.masonry li img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px -5px black;
+  }
+
+
+    .top-profile {
+        margin-top: 20px;
+    }
+    /*profile photo  */
+
+    .prof-photo {
+        border-radius: 20px;
+    }
+    /* style buttons */
+
+    .social-btns .btn,
+    .social-btns .btn:before,
+    .social-btns .btn .fa {
+        -webkit-transition: all 0.35s;
+        transition: all 0.35s;
+        -webkit-transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+        transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+    }
+
+    .social-btns .btn:before {
+        top: 90%;
+        left: -110%;
+    }
+
+    .social-btns .btn.facebook:before {
+        background-color: #3b5998;
+    }
+
+    .social-btns .btn.facebook .fa {
+        color: #3b5998;
+    }
+
+    .social-btns .btn.linkedin:before {
+        background-color: #0077B5;
+    }
+
+    .social-btns .btn.linkedin .fa {
+        color: #0077B5;
+    }
+
+    .social-btns .btn.twitter:before {
+        background-color: #3cf;
+    }
+
+    .social-btns .btn.twitter .fa {
+        color: #3cf;
+    }
+
+    .social-btns .btn.instagram:before {
+        background-color: #000000;
+    }
+
+    .social-btns .btn.instagram .fa {
+        color: #000000;
+    }
+
+    .social-btns .btn:focus:before,
+    .social-btns .btn:hover:before {
+        top: -10%;
+        left: -10%;
+    }
+
+    .social-btns .btn:focus .fa,
+    .social-btns .btn:hover .fa {
+        color: #fff;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .social-btns {
+        height: 90px;
+        margin: auto;
+        font-size: 0;
+        text-align: center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .social-btns .btn {
+        display: inline-block;
+        background-color: #fff;
+        width: 90px;
+        height: 90px;
+        line-height: 75px;
+        margin: 0 10px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 28%;
+        opacity: 0.99;
+        box-shadow: 0px 1px 5px 0px
+    }
+
+    .social-btns .btn:before {
+        content: '';
+        width: 120%;
+        height: 120%;
+        position: absolute;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .social-btns .btn .fa {
+        font-size: 38px;
+        vertical-align: middle;
+    }
+
+    li {
+        list-style-type: none;
+    }
+    /* End of Style Buttons */
+    .bottom {
+      border-bottom: 5px solid #cccccc;
+      padding: 10px;
+
+    }
+
+    .bio {
+      font-size: 20px;
+    }
+
+    .userName {
+      color: #ea1111;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+    }
+
+</style>

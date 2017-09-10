@@ -1,0 +1,85 @@
+<body>
+    <div ng-include="misc/styleBar.html"></div>
+        <div class="text-center" ng-repeat="artist in controller.artists" style="display: inline-block; margin: 40px 20px 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card hovercard">
+                        <div class="cardheader">
+                            <div class="img"><img class="img-circle" ng-src="{{artist.profilePic}}" alt="img"></div>
+                        </div>
+                          <br/>
+                            <div class="name">
+                              <p>{{artist.firstName}} {{ artist.lastName }}</p>
+                            </div>
+                          <div class="row">
+                            <div class="col-xs-6 text-center" id="rap-sheet">Experience</div>
+                            <div class="col-xs-6 text-center" id="rap-sheet">Portfolio</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-6 text-center" id="sheet-num">{{artist.exp}} +</div>
+                            <div class="col-xs-6 text-center" id="sheet-num">{{artist.portfolio.length}}</div>
+                          </div>
+                          <br/>
+                          <button class="btn btn-info btn-block" ng-click="controller.getUser(artist._id)">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+      </div>
+
+</body>
+
+<style>
+    /*Profile Card  */
+
+    .card {
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .card.hovercard img {
+        width: 220px;
+    }
+
+    .name p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 20px;
+        color: black;
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #41EAD4;
+    }
+
+    .btn-info:hover,
+    .btn-info:focus,
+    .btn-info.focus,
+    .btn-info:active,
+    .btn-info.active,
+    .open>.dropdown-toggle.btn-info {
+        color: #fff;
+        background-color: #14b8a2;
+    }
+
+    #rap-sheet {
+        color: black;
+        display: inline;
+    }
+
+    #sheet-num {
+        color: #999999;
+        display: inline;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .card:hover {
+        box-shadow: 5px;
+    }
+    /*Profile Card  */
+</style>

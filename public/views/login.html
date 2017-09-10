@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="home custom">
+        <div class="item">
+            <div class="content">
+                <form class="form-horizontal" ng-submit="controller.login()">
+                    <div class="logo">
+                        <img src="./img/Tatto-logo.png" width="150">
+                    </div>
+                    <div class="input-group lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                        <input type="text" class="form-control" placeholder="User name" ng-model="controller.artist.username">
+                    </div>
+                    <div class="input-group lg">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i> </span>
+                        <input type="password" class="form-control" placeholder="Password" ng-model="controller.artist.password">
+                    </div>
+                    <div class="form-group in">
+                      <button class="btn btn-primary btn-block">Log In</button>
+                    </div>
+
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                    <span class="cna">Create <a ui-sref='register'>new account</a></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: url('/img/background/dark-pattern.jpg');
+            background-size: cover;
+        }
+
+        .custom {
+            margin-top: 10%;
+        }
+
+        .home {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .item {
+            height: 500px;
+            width: 500px;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .content {
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .in {
+            padding: 15px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            background: 0 0;
+            border: 0;
+            box-shadow: none;
+            border-bottom: 1px solid #cccccc;
+            border-radius: 0;
+        }
+
+        .lg {
+            margin-bottom: 20px;
+        }
+
+        .input-group-addon {
+            background: 0 0 !important;
+            border: 0 !important;
+            color: #cccccc !important;
+            padding: 0 0 5px 0 !important;
+        }
+
+        .btn-info {
+            border: 0;
+            background: #000;
+            border-radius: 30px;
+        }
+
+        input[type=text],
+        input[type=password]:focus {
+            box-shadow: none !important
+        }
+
+        span.cna {
+            float: left;
+            padding-top: 5px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 5px;
+        }
+    </style>
+
+</body>

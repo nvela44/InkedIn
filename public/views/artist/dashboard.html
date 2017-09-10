@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <h4>Your Styles</h4>
+      <ul>
+        <li ng-repeat="style in controller.artist.styles track by $index">
+          <div class="row">
+            <div class="col-md-9">
+              {{ style }}
+            </div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-default" ng-click="controller.removeStyle($index)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </li> 
+      </ul>
+      <input type="text" class="form-control" placeholder="New Style" ng-model="controller.newStyle">
+      <button type="button" class="btn btn-success" name="button" ng-click="controller.addStyle()">Add Style <i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-3">
+          <img ng-src="{{ controller.artist.profilePic }}" alt="{{ controller.artist.username }}" style="width: 100%; height: auto">
+        </div>
+
+        <div class="col-md-9">
+          <h2>Welcome, {{ controller.artist.firstName }} {{ controller.artist.lastName }}</h2>
+          <h4>Member Since: {{ controller.artist.dateCreated | date: 'MMM d yyyy' }}</h4>
+
+          <button type="button" class="btn btn-warning" ng-click="controller.editProfile()">Edit Profile <i class="fa fa-pencil" aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+      <div class="row" ng-if="controller.artist.allowContact">
+        <div class="col-md-6">
+          <h4>Contact Email</h4>
+          <p>{{ controller.artist.email }}</p>
+        </div>
+
+        <div class="col-md-6">
+          <h4>Phone Number</h4>
+          <p>{{ controller.artist.address.phoneNumber }}</p>
+        </div>
+      </div>
+
+      <div class="row" ng-if="controller.artist.allowContact">
+        <div class="col-md-12">
+          <h4>Business Address</h4>
+          <p>{{ controller.artist.address.street }}<br>{{ controller.artist.address.state | uppercase }} {{ controller.artist.address.zip }}</p>
+
+          <p ng-if="controller.artist.allowContact"><span style="color: red">*</span> <small>Your contact information is displayed publicly.</small></p>
+          <p ng-if="!controller.artist.allowContact"><span style="color: red">*</span> <small>Your contact information is NOT currently displayed.</small></p>
+
+          <form ng-submit="{{ controller.artist.email }}" method="POST" style="max-width: 400px">
+            <input type="text" class="form-control" name="name" placeholder="Full Name">
+            <input type="email" class="form-control" name="_replyto" placeholder="Email">
+            <textarea name="message" class="form-control" placeholder="Message" style="resize: none; height: 150px"></textarea>
+            <input type="submit" class="btn btn-info" value="Send">
+        </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

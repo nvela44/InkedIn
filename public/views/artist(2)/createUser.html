@@ -1,0 +1,119 @@
+
+<body>
+    <div class="create page">
+        <div class="card container">
+            <div class="content">
+                <form ng-submit="controller.createUser()">
+                  <div class="logo text-center">
+                      <img src="./img/Tatto-logo.png" width="150">
+                  </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="lg">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" ng-model="controller.artist.firstName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="lg">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" ng-model="controller.artist.lastName">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="lg">
+                                <labelp>Email</label>
+                                    <input type="email" class="form-control" ng-model="controller.artist.email">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="lg">
+                                <label>Username</label>
+                                <input type="text" class="form-control" ng-model="controller.artist.username">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="lg">
+                                <label>Password</label>
+                                <input type="password" class="form-control" ng-model="controller.artist.password">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="lg">
+                                <label>Verify Password</label>
+                                <input type="password" class="form-control" ng-model="controller.artist.verifyPassword">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="in">
+                            <button class="btn btn-primary btn-block">Sign Up</button>
+                        </div>
+
+                        <span class="login">Already have an account <a ui-sref='login'>Log In</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: url('/img/background/dark-pattern.jpg');
+            background-size: cover;
+        }
+
+
+        .create {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10%;
+        }
+
+        .card {
+            height: auto;
+            width: 500px;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .content {
+            height: 100%;
+            padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .lg {
+            margin-bottom: 10px;
+        }
+
+        .btn-info {
+            border: 0;
+            border-radius: 30px;
+        }
+
+        .in {
+            padding: 15px;
+        }
+
+        .checkboxes li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 5px;
+        }
+
+        #pricing {
+            width: 300px;
+            height: 30px;
+        }
+
+    </style>
+
+</body>
+
+</html>
